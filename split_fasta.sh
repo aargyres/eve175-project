@@ -28,6 +28,7 @@ if [ ! -d "$OUTDIR" ]; then
 	mkdir "$OUTDIR"
 fi
 
+NUM_FILES=0
 # Iterate through lines of a file
 while IFS= read -r line; do
 	# Process header lines
@@ -37,8 +38,15 @@ while IFS= read -r line; do
 		FILENAME="${FILENAME}.fa"
 		# Add header line to file
 		echo "$line" > ${OUTDIR}/${FILENAME}
+		# Display message with name and output path of newly created file
+		echo "Created: ${OUTDIR}/${FILENAME}"
+		# Increment counter for number of files
+		NUM_FILES=$((NUM_FILES + 1))
 	# Process sequence lines
 	else
 		echo "$line" >> ${OUTDIR}/${FILENAME}
 	fi
 done < "$FILE"
+
+echo "Total files created: $NUM_FILES"
+
