@@ -27,3 +27,18 @@ if [ ! -d "$OUTDIR" ]; then
 	# Create output directory if it does not exist
 	mkdir "$OUTDIR"
 fi
+
+# Iterate through lines of a file
+while IFS= read -r line; do
+	# Process header lines
+	if echo "$line" | grep -q "^>"; then
+		# Set filename to first word of header
+		FILENAME=$(echo "$line" | sed 's/^>//' | awk '{split($0, words, " ")} END {print words[1]}')
+		FILENAME="${FILENAME}.fa"
+		# Add header line to file
+		echo "$line" > ${OUTDIR}/${FILENAME}
+	# Process sequence lines
+	else
+		echo "$line" >> ${OUTDIR}/${FILENAME}
+	fi
+done < "$FILE"
