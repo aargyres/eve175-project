@@ -2,9 +2,9 @@
 # Splits a multi-sequence FASTA file into individual files
 
 # Check if exactly two arguments provided
-if [[ ! $# -eq 2 ]]; then
-        echo "Usage: $0 <FASTA file> <output dir>"
-        exit 1
+if [ ! $# -eq 2 ]; then
+    echo "Usage: $0 <FASTA file> <output dir>"
+    exit 1
 fi
 
 FILE=$1
