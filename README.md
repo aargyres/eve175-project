@@ -19,11 +19,21 @@ or more sequences
 Puts .fa files in specified output directory.
 
 Prints statement with the names and number of files that were created.
-Example Output:
-Created: example_dir/gene1.fa
-Created: example_dir/gene2.fa
-Created: examplee_dir/gene3.fa
-Total files created: 3 files 
+
+## Example Output
+Given the following input file:
+	>gene regulatory region
+	ATCGATCGATCGGGCCAATTGGCC
+	>geneB coding sequence
+	ATGAAACCCGGG
+	>geneC intron
+	TTTTAAAACCCC
+
+Output: 
+	Created: example_dir/gene1.fa
+	Created: example_dir/gene2.fa
+	Created: examplee_dir/gene3.fa
+	Total files created: 3 files 
 
 ## Dependencies
 split_fasta.sh assumes that the user has permission to read the FASTA file and 
